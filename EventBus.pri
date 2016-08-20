@@ -1,7 +1,7 @@
 
-LIBS += -lboost_thread \
-        -lboost_system \
-        -lboost_filesystem
+#LIBS += -lboost_thread \
+#        -lboost_system \
+#        -lboost_filesystem
 
 INCLUDEPATH += $$PWD
 
