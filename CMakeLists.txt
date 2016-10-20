@@ -34,19 +34,19 @@ set(HEADERS EventBus.h
 
 find_package(Qt5Core REQUIRED)
 
-SET(Boost_USE_STATIC_LIBS       ON)
-SET(Boost_USE_MULTITHREADED     ON)
-FIND_PACKAGE(Boost COMPONENTS thread system filesystem REQUIRED)
-if(Boost_FOUND)
-  include_directories(${Boost_INCLUDE_DIRS})
+#SET(Boost_USE_STATIC_LIBS       ON)
+#SET(Boost_USE_MULTITHREADED     ON)
+#FIND_PACKAGE(Boost COMPONENTS thread system filesystem REQUIRED)
+#if(Boost_FOUND)
+#  include_directories(${Boost_INCLUDE_DIRS})
   #add_executable(foo foo.cc)
 
-endif()
+#endif()
 
 
-add_library(eventbus STATIC ${SOURCES})
+add_library(eventbus ${SOURCES})
 
-target_link_libraries(eventbus ${Boost_LIBRARIES})
-qt5_use_modules(eventbus Core)
+target_link_libraries(eventbus Qt5::Core)
+#qt5_use_modules(eventbus Core)
 #target_link_libraries(eventbus Q5t::Core)
-target_include_directories(eventbus PUBLIC ${HEADERS})
+target_include_directories(eventbus PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
