@@ -8,15 +8,22 @@ set(PROJECT_NAME "Eventbus" CACHE STRING "Project Name")
 set(PROJECT_NAME_TITLE ${PROJECT_NAME})
 
 # Options
-set(EVENTBUSS_QT_VERSION 5 CACHE STRING "Qt version to use when building Eventbus (can be 4 or 5)")
+set(EVENTBUS_QT_VERSION 5 CACHE STRING "Qt version to use when building Eventbus (can be 4 or 5)")
 
 project(eventbus)
 # Find includes in corresponding build directories
-#set(CMAKE_INCLUDE_CURRENT_DIR ON)
+set(CMAKE_INCLUDE_CURRENT_DIR ON)
 # Instruct CMake to run moc automatically when needed.
 set(CMAKE_AUTOMOC ON)
 
-set(SOURCES EventBus.cpp
+qt5_wrap_cpp(MOC
+  EventBus.h
+  EventBusDispatcher.h
+)
+
+set(SOURCES 
+  ${MOC}
+  EventBus.cpp
   EventBusSubscriber.cpp
   EventError.cpp
   EventBusDispatcher.cpp
